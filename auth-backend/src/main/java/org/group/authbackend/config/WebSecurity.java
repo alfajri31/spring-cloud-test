@@ -2,8 +2,6 @@ package org.group.authbackend.config;
 
 import org.group.authbackend.repository.UserRepository;
 import org.group.authbackend.service.ILoginService;
-import org.springframework.boot.web.servlet.ServletContextInitializer;
-import org.springframework.boot.web.servlet.server.CookieSameSiteSupplier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -42,6 +40,7 @@ public class WebSecurity {
                     registry.addMapping("/**")
                             .allowedOrigins("http://localhost:9001")
                             .allowedMethods("*")
+                            .allowCredentials(true)
                             .allowedHeaders("*");
 
                 }
@@ -71,11 +70,13 @@ public class WebSecurity {
         AuthenticationFilter authenticationFilter = new AuthenticationFilter(environment,userRepository);
         authenticationFilter.setAuthenticationManager(authenticationManager(http.getSharedObject(AuthenticationConfiguration.class)));
         http
+                .sessionManagement(httpSecuritySessionManagementConfigurer -> httpSecuritySessionManagementConfigurer.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers("/login")
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers("/error").permitAll()
                 )
                 .addFilter(authenticationFilter);
         return http.build();
