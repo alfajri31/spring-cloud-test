@@ -1,10 +1,11 @@
 package org.group.authbackend.model.dto;
 
 
-import lombok.AllArgsConstructor;
-
-@AllArgsConstructor
 public class CsrfTokenDto {
+
+    public CsrfTokenDto() {
+
+    }
     public String token;
     public String headerName;
 
@@ -14,6 +15,14 @@ public class CsrfTokenDto {
 
     public void setToken(String token) {
         this.token = token;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
     }
 
     public String getHeaderName() {
@@ -33,5 +42,6 @@ public class CsrfTokenDto {
     }
 
     public String parameterName;
+    private String sessionId;
 
 }

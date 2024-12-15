@@ -2,6 +2,8 @@ package org.group.authbackend.config;
 
 import org.group.authbackend.repository.UserRepository;
 import org.group.authbackend.service.ILoginService;
+import org.springframework.boot.web.servlet.ServletContextInitializer;
+import org.springframework.boot.web.servlet.server.CookieSameSiteSupplier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
@@ -10,6 +12,7 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
@@ -43,7 +46,6 @@ public class WebSecurity {
 
                 }
             };
-
     }
 
     @Bean
@@ -71,13 +73,11 @@ public class WebSecurity {
         http
                 .csrf(csrf -> csrf
                         .ignoringRequestMatchers("/login")
-//                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 )
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
                 )
                 .addFilter(authenticationFilter);
-
         return http.build();
     }
 }

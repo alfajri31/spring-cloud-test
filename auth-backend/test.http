@@ -4,7 +4,7 @@ GET http://localhost:8000/auth/csrf-token
 ### POST LOGIN
 POST http://localhost:8000/auth/login
 Content-Type: application/json
-X-CSRF-TOKEN: CF0PE6Ty5pUbpFJvNtkEWEDO6wDEwCPIwcdzcaxPBf9PJQXHbmQ8IZ3A36Y2lWBcAfQwbyOtxjmm-Efl9KNLRM1_Mpx4QGOk
+X-CSRF-TOKEN: RPIMtvAngbs53o8gHZdiUIMMej5UWGvFRpuS66CZWlF1Y7rrcMM1hpIXt9oUuOwUJLpWZrM9V19nPQ_odan305msPGFNVdvd
 
 {
   "username": "Mary",

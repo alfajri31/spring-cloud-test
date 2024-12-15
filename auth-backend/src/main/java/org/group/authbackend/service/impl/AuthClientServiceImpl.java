@@ -24,9 +24,7 @@ public class AuthClientServiceImpl implements AuthClient {
 
     @Override
     public ResponseEntity<Object> getLogin(LoginDto loginDto) {
-        ResponseEntity<CsrfTokenDto> csrfTokenDtoResponseEntity = getCsrfToken();
         HttpHeaders headers = new HttpHeaders();
-        headers.set("X-CSRF-TOKEN", csrfTokenDtoResponseEntity.getBody().token);
         HttpEntity<LoginDto> entity = new HttpEntity<>(loginDto,headers);
         ResponseEntity<UserDto> response = restTemplate.exchange(authProperties.getLogin(),
                 HttpMethod.POST,
