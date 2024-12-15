@@ -25,6 +25,7 @@ public class AuthController {
         csrfTokenDto.setToken(csrfToken.getToken());
         csrfTokenDto.setHeaderName(csrfToken.getHeaderName());
         csrfTokenDto.setParameterName(csrfToken.getParameterName());
+//        CsrfTokenDto csrfTokenDto = new CsrfTokenDto();
         return ResponseEntity.ok(csrfTokenDto);
     }
 
