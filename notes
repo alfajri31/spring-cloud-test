@@ -1,7 +1,7 @@
 jika pada web security
 csrf nya aktif dan menggunakan csrf.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-maka akan spring akan mencatat 'x-xsrf-token' di cookies spring backend
-jika csrf nya aktif dan tidak menggunakan .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) maka spring hanya akan mencatat 'session' spring banckend saja
+maka akan spring akan mencatat sebgaia 'X-XSRF-TOKEN' di cookies spring backend
+jika csrf nya aktif dan tidak menggunakan .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) maka spring hanya akan mencatat segabai 'JSESSIONID' di cookies spring backend saja
 kamu bisa cek cookie dari spring dan intellj di http-client.cookies di folder <root user>/.idea/http-client.cookies
 X-SRF dan X-CSRF adalah sama token yang didapat dari api akan membuat request menjadi valid untuk target user sehingga tidak
 bisa di hijack oleh user lain dengan token yang sama 1 request adalah 1 token
