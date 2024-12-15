@@ -1,0 +1,5 @@
+jika pada web security
+csrf nya aktif dan menggunakan .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+maka akan spring akan mencatat 'session' dan 'x-xsrf-token' di cookies
+jika csrf nya aktif dan tidak menggunakan .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse()) maka spring hanya akan mencatat 'session' saja
+kamu bisa cek cookie dari spring dan intellj di http-client.cookies di folder <root user>/.idea/http-client.cookies
