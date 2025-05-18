@@ -37,4 +37,6 @@ public class User {
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    //define attribute authorities here:
 }

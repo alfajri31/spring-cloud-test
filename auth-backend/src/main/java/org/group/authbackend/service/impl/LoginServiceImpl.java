@@ -42,6 +42,7 @@ public class LoginServiceImpl implements ILoginService {
             throw new UsernameNotFoundException(username);
         }
         else {
+            //since your ILoginService is extended with UserDetails class it will same as long the attribute name is same with your custom entity
             return new org.springframework.security.core.userdetails.User(user.getUsername(),user.getPassword(),true,true,true,true,new ArrayList<>());
         }
     }
