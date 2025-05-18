@@ -1,6 +1,8 @@
 package org.group.authbackend.model.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.stereotype.Component;
@@ -11,24 +13,20 @@ import java.util.Date;
 @Entity
 @Table(name = "tbl_users")
 @Component
+@Getter
+@Setter
 public class User {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
     public String id;
     @Column(name="email")
     public String email;
+    @Getter
     @Column(name="username")
     public String username;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
+    @Getter
     @Column(name="password")
     public String password;
     @Column(name="role")
@@ -39,16 +37,4 @@ public class User {
     @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }

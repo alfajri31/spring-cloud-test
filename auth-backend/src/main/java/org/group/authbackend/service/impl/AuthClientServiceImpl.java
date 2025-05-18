@@ -1,5 +1,6 @@
 package org.group.authbackend.service.impl;
 
+import lombok.RequiredArgsConstructor;
 import org.group.authbackend.model.dto.CsrfTokenDto;
 import org.group.authbackend.model.dto.LoginDto;
 import org.group.authbackend.model.dto.UserDto;
@@ -13,17 +14,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
+@RequiredArgsConstructor
 public class AuthClientServiceImpl implements AuthClient {
     private final AuthProperties authProperties;
     private final RestTemplate restTemplate;
 
-    public AuthClientServiceImpl(AuthProperties authProperties,RestTemplate restTemplate) {
-        this.authProperties = authProperties;
-        this.restTemplate = restTemplate;
-    }
-
     @Override
-    public ResponseEntity<Object> getLogin(LoginDto loginDto) {
+    public ResponseEntity<Object> postLogin(LoginDto loginDto) {
         HttpHeaders headers = new HttpHeaders();
         HttpEntity<LoginDto> entity = new HttpEntity<>(loginDto,headers);
         ResponseEntity<UserDto> response = restTemplate.exchange(authProperties.getLogin(),
